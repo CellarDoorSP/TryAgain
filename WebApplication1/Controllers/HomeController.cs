@@ -5,15 +5,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using WebApplication1.Models;
+using WebApplication1.Services;
+using WebApplication1.ViewModels;
 
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
-        { 
-            return View();
+        private IStudentData _studentData;
+
+        public HomeController(IStudentData studentData)
+        {
+            _studentData = studentData;
         }
+
+        public IActionResult Index()
+        {
+            var model = new HomeIndexViewModel();
+            model.Students = _studentData.GetAll();
+            model.CurrentMessage = "Here's a message";
+
+            return View(model);
+        }
+
+
+
 
         public IActionResult KidView()
         {
