@@ -5,14 +5,23 @@
 
 <body>
     <h1>@Model.CurrentMessage</h1>
-    <table>
+    <table class="table table-bordered table-responsive table-hover">
+        <tr>
+            <th>Name</th>
+            <th>Behaviors</th>
+            <th>Total</th>
+        </tr>
         @foreach (var student in Model.Students)
         {
             <tr>
-                <td>@student.Id</td>
-                <td>@student.Name</td>
+                <td width="125">@student.Name</td>
+                <td></td>
+                <td width="50"></td>
             </tr>
         }
     </table>
-    <a asp-action="Create">Add Student</a>
+    <a asp-action="AddStudent">Add Student</a>
+    <a asp-action="DeleteStudent">Delete Student</a>
+    <a asp-action="AddBehavior">Add Behavior</a>
+    <a asp-action="DeleteBehavior">Delete Behavior</a>
 </body>

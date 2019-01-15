@@ -1,0 +1,13 @@
+﻿@model WebApplication1.Models.Student
+
+<h1>Delete Student</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="Name"></label>
+        <input asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <input type="submit" name="delete" value="Delete" />
+</form>

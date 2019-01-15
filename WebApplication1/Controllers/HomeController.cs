@@ -28,6 +28,52 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        [HttpGet]
+        public IActionResult AddStudent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddStudent(StudentEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var newStudent = new Student();
+                newStudent.Name = model.Name;
+
+                newStudent = _studentData.Add(newStudent);
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public IActionResult DeleteStudent()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteStudent(StudentEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                _studentData.Delete(model.Name);
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+
 
 
 
