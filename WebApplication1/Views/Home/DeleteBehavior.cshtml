@@ -1,0 +1,16 @@
+﻿@model WebApplication1.Models.Behavior
+
+<h1>Add Behavior</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="StudentName"></label>
+        <input asp-for="StudentName" />
+        <span asp-validation-for="StudentName"></span>
+        <label asp-for="BehaviorName"></label>
+        <input asp-for="BehaviorName" />
+        <span asp-validation-for="BehaviorName"></span>
+    </div>
+
+    <input type="submit" name="deleteBehavior" value="Delete" />
+</form>

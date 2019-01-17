@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,7 +9,14 @@ namespace WebApplication1.Models
     public class Behavior
     {
         public int Id { get; set; }
-        public string Name { get; set; }
+        [Display(Name = "Behavior Description")]
+        [Required]
+        public string BehaviorName { get; set; }
+        [Display(Name = "Behavior Value")]
+        [Required]
         public int Value { get; set; }
+        [Display(Name = "Student Name")]
+        [Required]
+        public string StudentName { get; set; }
     }
 }

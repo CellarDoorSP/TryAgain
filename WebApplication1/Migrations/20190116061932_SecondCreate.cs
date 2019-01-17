@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace WebApplication1.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class SecondCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,13 +13,12 @@ namespace WebApplication1.Migrations
                 name: "Students",
                 columns: table => new
                 {
+                    StudentName = table.Column<string>(nullable: false),
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Students", x => x.Id);
+                    table.PrimaryKey("PK_Students", x => x.StudentName);
                 });
 
             migrationBuilder.CreateTable(
@@ -28,25 +27,25 @@ namespace WebApplication1.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    StudentId = table.Column<int>(nullable: true),
+                    BehaviorName = table.Column<string>(nullable: false),
+                    StudentName = table.Column<string>(nullable: false),
                     Value = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Behavior", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Behavior_Students_StudentId",
-                        column: x => x.StudentId,
+                        name: "FK_Behavior_Students_StudentName",
+                        column: x => x.StudentName,
                         principalTable: "Students",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        principalColumn: "StudentName",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Behavior_StudentId",
+                name: "IX_Behavior_StudentName",
                 table: "Behavior",
-                column: "StudentId");
+                column: "StudentName");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

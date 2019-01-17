@@ -16,5 +16,6 @@ namespace WebApplication1.Data
         public MyDbContext(DbContextOptions options)
             : base(options) { }
         public DbSet<Student> Students { get; set; }
+        public DbSet<Behavior> Behavior { get; set; }
     }
 }

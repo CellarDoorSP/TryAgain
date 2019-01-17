@@ -9,8 +9,8 @@ namespace WebApplication1.Services
     public interface IStudentData
     {
         IEnumerable<Student> GetAll();
-        Student Get(int id);
         Student Add(Student student);
         void Delete(string student);
+        bool Contains(string student);
     }
 }

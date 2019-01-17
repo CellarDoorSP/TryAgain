@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApplication1.Models
 {
     public class Student
-    {
-        public int Id { get; set; }
-        
+    {        
         [Display(Name="Student Name")]
         [Required]
-        public string Name { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public string StudentName { get; set; }
         public List<Behavior> StudentBehaviors { get; set; }
     }
 }

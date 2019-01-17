@@ -11,8 +11,8 @@ using WebApplication1.Data;
 namespace WebApplication1.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20190111194431_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20190116063418_ThirdCreate")]
+    partial class ThirdCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,28 +26,26 @@ namespace WebApplication1.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<string>("Name");
+                    b.Property<string>("BehaviorName")
+                        .IsRequired();
 
-                    b.Property<int?>("StudentId");
+                    b.Property<string>("StudentName")
+                        .IsRequired();
 
                     b.Property<int>("Value");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId");
+                    b.HasIndex("StudentName");
 
                     b.ToTable("Behavior");
                 });
 
             modelBuilder.Entity("WebApplication1.Models.Student", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("StudentName");
 
-                    b.Property<string>("Name")
-                        .IsRequired();
-
-                    b.HasKey("Id");
+                    b.HasKey("StudentName");
 
                     b.ToTable("Students");
                 });
@@ -56,7 +54,8 @@ namespace WebApplication1.Migrations
                 {
                     b.HasOne("WebApplication1.Models.Student")
                         .WithMany("StudentBehaviors")
-                        .HasForeignKey("StudentId");
+                        .HasForeignKey("StudentName")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

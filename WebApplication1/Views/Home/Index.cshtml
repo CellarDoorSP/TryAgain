@@ -4,7 +4,6 @@
 }
 
 <body>
-    <h1>@Model.CurrentMessage</h1>
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <th>Name</th>
@@ -14,9 +13,31 @@
         @foreach (var student in Model.Students)
         {
             <tr>
-                <td width="125">@student.Name</td>
-                <td></td>
-                <td width="50"></td>
+                <td width="125">@student.StudentName</td>
+                <td>
+                    @{int total = 0;}
+                    @foreach (var behavior in Model.Behaviors)
+                    {
+                        if (behavior.StudentName == student.StudentName)
+                        {
+                            total = total + behavior.Value;
+                            if (behavior.Value > 0)
+                            {
+                                <div style="background-color:forestgreen; width:100px; text-align:center">
+                                    @behavior.BehaviorName: @behavior.Value
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="background-color:red; width:100px; text-align:center">
+                                    @behavior.BehaviorName: @behavior.Value
+                                </div>
+                            }
+                        }
+                    }
+                </td>
+                <td width="50">@total</td>
+                @total = 0;
             </tr>
         }
     </table>

@@ -13,17 +13,19 @@ namespace WebApplication1.Controllers
     public class HomeController : Controller
     {
         private IStudentData _studentData;
+        private IBehaviorData _behaviorData;
 
-        public HomeController(IStudentData studentData)
+        public HomeController(IStudentData studentData, IBehaviorData behaviorData)
         {
             _studentData = studentData;
+            _behaviorData = behaviorData;
         }
 
         public IActionResult Index()
         {
             var model = new HomeIndexViewModel();
             model.Students = _studentData.GetAll();
-            model.CurrentMessage = "Here's a message";
+            model.Behaviors = _behaviorData.GetAll();
 
             return View(model);
         }
@@ -40,7 +42,7 @@ namespace WebApplication1.Controllers
             if (ModelState.IsValid)
             {
                 var newStudent = new Student();
-                newStudent.Name = model.Name;
+                newStudent.StudentName = model.StudentName;
 
                 newStudent = _studentData.Add(newStudent);
 
@@ -63,7 +65,7 @@ namespace WebApplication1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _studentData.Delete(model.Name);
+                _studentData.Delete(model.StudentName);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -72,6 +74,33 @@ namespace WebApplication1.Controllers
                 return View();
             }
         }
+
+        [HttpGet]
+        public IActionResult AddBehavior()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddBehavior(BehaviorEditModel model)
+        {
+            if (ModelState.IsValid && _studentData.Contains(model.StudentName))
+            {               
+                var newBehavior = new Behavior();
+                newBehavior.BehaviorName = model.BehaviorName;
+                newBehavior.StudentName = model.StudentName;
+                newBehavior.Value = model.Value;
+
+                newBehavior = _behaviorData.Add(newBehavior);
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
+        }
+
 
 
 

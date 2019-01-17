@@ -9,6 +9,6 @@ namespace WebApplication1.ViewModels
     public class HomeIndexViewModel
     {
         public IEnumerable<Student> Students { get; set; }
-        public string CurrentMessage { get; set; }
+        public IEnumerable<Behavior> Behaviors { get; set; }
     }
 }
