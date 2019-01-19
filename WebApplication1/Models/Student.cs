@@ -10,7 +10,7 @@ namespace WebApplication1.Models
     public class Student
     {        
         [Display(Name="Student Name")]
-        [Required]
+        [Required(ErrorMessage = "Name is required")]
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string StudentName { get; set; }

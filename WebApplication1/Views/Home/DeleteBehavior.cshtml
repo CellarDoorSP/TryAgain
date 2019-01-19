@@ -3,10 +3,22 @@
 <h1>Add Behavior</h1>
 
 <form method="post">
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
+            window.onload = function () {
+                alert("@ViewBag.Message");
+
+            }
+        </script>
+    }
+
     <div>
         <label asp-for="StudentName"></label>
         <input asp-for="StudentName" />
         <span asp-validation-for="StudentName"></span>
+    </div>
+    <div>
         <label asp-for="BehaviorName"></label>
         <input asp-for="BehaviorName" />
         <span asp-validation-for="BehaviorName"></span>

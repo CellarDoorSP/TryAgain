@@ -23,21 +23,26 @@ namespace WebApplication1.Services
             return behavior;
         }
 
-        //public void Delete(string student, string behavior)
-        //{
-        //    Behavior removeBeavior = GetByName()
-        //}
+        public void Delete(string behavior, string student)
+        {
+            Behavior removeBehavior = GetByName(behavior, student);
+            if(removeBehavior != null)
+            {
+                _context.Behavior.Remove(removeBehavior);
+                _context.SaveChanges();
+            }
+        }
 
         public Behavior Get(int id)
         {
             return _context.Behavior.FirstOrDefault(s => s.Id == id);
         }
 
-        //public Behavior GetByName(string behavior, string student)
-        //{
-        //    List<Behavior> behaviorsMatched = _context.Behaviors.Where(s => s.)
-        //    return _context.Behaviors.FirstOrDefault(b => b.Name == behavior && s => )
-        //}
+        public Behavior GetByName(string behavior, string student)
+        {
+            IQueryable<Behavior> behaviorsMatched = _context.Behavior.Where(s => s.BehaviorName == behavior);
+            return behaviorsMatched.FirstOrDefault(b => b.StudentName == student);
+        }
 
         public IEnumerable<Behavior> GetAll()
         {

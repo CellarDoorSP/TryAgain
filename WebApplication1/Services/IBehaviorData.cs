@@ -10,8 +10,8 @@ namespace WebApplication1.Services
     {
         IEnumerable<Behavior> GetAll();
         Behavior Get(int id);
-        //Behavior GetByName(string name, string studentName);
+        Behavior GetByName(string behavior, string student);
         Behavior Add(Behavior behavior);
-        //void Delete(string student, string behavior);
+        void Delete(string behavior, string student);
     }
 }

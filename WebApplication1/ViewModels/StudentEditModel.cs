@@ -8,7 +8,7 @@ namespace WebApplication1.ViewModels
 {
     public class StudentEditModel
     {
-        [Required]
+        [Required(ErrorMessage = "Name required")]
         public string StudentName { get; set; }
     }
 }

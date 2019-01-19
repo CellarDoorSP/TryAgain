@@ -67,6 +67,14 @@ namespace WebApplication1.Controllers
             {
                 _studentData.Delete(model.StudentName);
 
+                foreach(var behavior in _behaviorData.GetAll())
+                {
+                    if(behavior.StudentName == model.StudentName)
+                    {
+                        _behaviorData.Delete(behavior.BehaviorName, model.StudentName);
+                    }
+                }
+
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -84,7 +92,13 @@ namespace WebApplication1.Controllers
         [HttpPost]
         public IActionResult AddBehavior(BehaviorEditModel model)
         {
-            if (ModelState.IsValid && _studentData.Contains(model.StudentName))
+            if(!_studentData.Contains(model.StudentName))
+            {
+                ViewBag.Message = "Student name must already be added";
+                return View();
+            }
+
+            if (ModelState.IsValid)
             {               
                 var newBehavior = new Behavior();
                 newBehavior.BehaviorName = model.BehaviorName;
@@ -93,6 +107,32 @@ namespace WebApplication1.Controllers
 
                 newBehavior = _behaviorData.Add(newBehavior);
 
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return View();
+            }
+        }
+
+        [HttpGet]
+        public IActionResult DeleteBehavior()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult DeleteBehavior(BehaviorEditModel model)
+        {
+            if (!_studentData.Contains(model.StudentName))
+            {
+                ViewBag.Message = "Student name must already be added";
+                return View();
+            }
+
+            if (ModelState.IsValid)
+            {
+                _behaviorData.Delete(model.BehaviorName, model.StudentName);
                 return RedirectToAction(nameof(Index));
             }
             else

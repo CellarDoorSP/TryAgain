@@ -10,13 +10,13 @@ namespace WebApplication1.Models
     {
         public int Id { get; set; }
         [Display(Name = "Behavior Description")]
-        [Required]
+        [Required(ErrorMessage = "Description of behavior required")]
         public string BehaviorName { get; set; }
         [Display(Name = "Behavior Value")]
-        [Required]
+        [Required(ErrorMessage = "A value is required")]
         public int Value { get; set; }
         [Display(Name = "Student Name")]
-        [Required]
+        [Required(ErrorMessage = "Student Name required")]
         public string StudentName { get; set; }
     }
 }

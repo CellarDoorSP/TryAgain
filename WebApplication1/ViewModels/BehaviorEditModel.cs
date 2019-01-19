@@ -8,11 +8,11 @@ namespace WebApplication1.ViewModels
 {
     public class BehaviorEditModel
     {        
-        [Required]
+        [Required(ErrorMessage = "Student Name required")]
         public string StudentName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Description of behavior required")]
         public string BehaviorName { get; set; }
-        [Required]
+        [Required(ErrorMessage = "A value is required")]
         public int Value { get; set; }
     }
 }
