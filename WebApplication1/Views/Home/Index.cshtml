@@ -16,25 +16,31 @@
                 <td width="125">@student.StudentName</td>
                 <td>
                     @{int total = 0;}
-                    @foreach (var behavior in Model.Behaviors)
-                    {
-                        if (behavior.StudentName == student.StudentName)
-                        {
-                            total = total + behavior.Value;
-                            if (behavior.Value > 0)
+                    <div class="container ">
+                        <div class="row">
+                            @foreach (var behavior in Model.Behaviors)
                             {
-                                <div style="background-color:forestgreen; width:100px; text-align:center">
-                                    @behavior.BehaviorName: @behavior.Value
-                                </div>
+                                if (behavior.StudentName == student.StudentName)
+                                {
+                                    total = total + behavior.Value;
+                                    if (behavior.Value > 0)
+                                    {
+                                        <div class="col-sm-2" style="background-image: linear-gradient(to bottom right, forestgreen, lightgreen); text-align:center; border-style:solid; border-radius:5px; border-width:2px">
+                                            <div>@behavior.BehaviorName</div>
+                                            <div>@behavior.Value</div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="col-sm-2" style="background-image: linear-gradient(to bottom right, red, indianred); text-align:center; border-style:solid; border-radius:5px; border-width:2px">
+                                            <div>@behavior.BehaviorName</div>
+                                            <div>@behavior.Value</div>
+                                        </div>
+                                    }
+                                }
                             }
-                            else
-                            {
-                                <div style="background-color:red; width:100px; text-align:center">
-                                    @behavior.BehaviorName: @behavior.Value
-                                </div>
-                            }
-                        }
-                    }
+                        </div>
+                    </div>
                 </td>
                 <td width="50">@total</td>
                 @total = 0;
