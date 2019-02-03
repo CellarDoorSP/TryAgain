@@ -13,5 +13,6 @@ namespace WebApplication1.Services
         Behavior GetByName(string behavior, string student);
         Behavior Add(Behavior behavior);
         void Delete(string behavior, string student);
+        void DeleteAll();
     }
 }

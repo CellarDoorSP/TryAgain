@@ -4,7 +4,14 @@
 }
 
 <body>
-    <a asp-action="ResetCurrent">Reset</a>
+    <div style="height:20px"></div>
+    <a asp-action="AddStudent">Add Student</a>
+    |
+    <a asp-action="DeleteStudent">Delete Student</a>
+    |
+    <a asp-action="AddBehavior">Add Behavior</a>
+    |
+    <a asp-action="DeleteBehavior">Delete Behavior</a>
 
     <table class="table table-bordered table-responsive table-hover">
         <tr>
@@ -46,13 +53,5 @@
             </tr>
         }
     </table>
-
-
-    <a asp-action="AddStudent">Add Student</a>
-    |
-    <a asp-action="DeleteStudent">Delete Student</a>
-    |
-    <a asp-action="AddBehavior">Add Behavior</a>
-    |
-    <a asp-action="DeleteBehavior">Delete Behavior</a>
+    <a asp-action="ResetCurrent">Reset</a>
 </body>

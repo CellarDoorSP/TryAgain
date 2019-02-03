@@ -48,5 +48,15 @@ namespace WebApplication1.Services
         {
             return _context.Behavior;
         }
+
+        public void DeleteAll()
+        {
+            var behaviors = _context.Behavior;
+            foreach(var behavior in behaviors)
+            {
+                _context.Behavior.Remove(behavior);
+            }
+            _context.SaveChanges();
+        }
     }
 }

@@ -151,6 +151,7 @@ namespace WebApplication1.Controllers
         public IActionResult ResetCurrent()
         {
             _studentData.ResetCurrentTotal();
+            _behaviorData.DeleteAll();
 
             return RedirectToAction(nameof(Index));
         }
