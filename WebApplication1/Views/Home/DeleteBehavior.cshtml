@@ -13,15 +13,24 @@
         </script>
     }
 
-    <div>
-        <label asp-for="StudentName"></label>
-        <input asp-for="StudentName" />
-        <span asp-validation-for="StudentName"></span>
+    <div class="row">
+        <div class="col-sm-2">
+            <label asp-for="StudentName"></label>
+        </div>
+        <div class="col-sm-1">
+            <input asp-for="StudentName" />
+            <span asp-validation-for="StudentName"></span>
+        </div>
     </div>
-    <div>
-        <label asp-for="BehaviorName"></label>
-        <input asp-for="BehaviorName" />
-        <span asp-validation-for="BehaviorName"></span>
+    <div style="height:5px"></div>
+    <div class="row">
+        <div class="col-sm-2">
+            <label asp-for="BehaviorName"></label>
+        </div>
+        <div class="col-sm-1">
+            <input asp-for="BehaviorName" />
+            <span asp-validation-for="BehaviorName"></span>
+        </div>
     </div>
 
     <input type="submit" name="deleteBehavior" value="Delete" />

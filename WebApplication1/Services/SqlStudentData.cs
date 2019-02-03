@@ -47,5 +47,51 @@ namespace WebApplication1.Services
         {
             return _context.Students.ToList().Contains(GetByName(student));
         }
+
+        public void EditAddLifetimeTotal(string student, int val)
+        {
+            if(Contains(student))
+            {
+                GetByName(student).LifetimeTotal += val;
+                _context.SaveChanges();
+            }
+        }
+
+        public void EditAddCurrentTotal(string student, int val)
+        {
+            if (Contains(student))
+            {
+                GetByName(student).CurrentTotal += val;
+                _context.SaveChanges();
+            }
+        }
+
+        public void EditDeleteLifetimeTotal(string student, int val)
+        {
+            if (Contains(student))
+            {
+                GetByName(student).LifetimeTotal -= val;
+                _context.SaveChanges();
+            }
+        }
+  
+        public void EditDeleteCurrentTotal(string student, int val)
+        {
+            if (Contains(student))
+            {
+                GetByName(student).CurrentTotal -= val;
+                _context.SaveChanges();
+            }
+        }
+
+        public void ResetCurrentTotal()
+        {
+            foreach(var student in _context.Students)
+            {
+                student.CurrentTotal = 0;
+            }
+
+            _context.SaveChanges();
+        }
     }
 }

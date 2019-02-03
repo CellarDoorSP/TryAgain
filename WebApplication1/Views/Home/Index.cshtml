@@ -4,6 +4,8 @@
 }
 
 <body>
+    <a asp-action="ResetCurrent">Reset</a>
+
     <table class="table table-bordered table-responsive table-hover">
         <tr>
             <th>Name</th>
@@ -15,14 +17,12 @@
             <tr>
                 <td width="125">@student.StudentName</td>
                 <td>
-                    @{int total = 0;}
                     <div class="container ">
                         <div class="row">
                             @foreach (var behavior in Model.Behaviors)
                             {
                                 if (behavior.StudentName == student.StudentName)
                                 {
-                                    total = total + behavior.Value;
                                     if (behavior.Value > 0)
                                     {
                                         <div class="col-sm-2" style="background-image: linear-gradient(to bottom right, forestgreen, lightgreen); text-align:center; border-style:solid; border-radius:5px; border-width:2px">
@@ -42,13 +42,17 @@
                         </div>
                     </div>
                 </td>
-                <td width="50">@total</td>
-                @total = 0;
+                <td width="50">@student.CurrentTotal</td>
             </tr>
         }
     </table>
+
+
     <a asp-action="AddStudent">Add Student</a>
+    |
     <a asp-action="DeleteStudent">Delete Student</a>
+    |
     <a asp-action="AddBehavior">Add Behavior</a>
+    |
     <a asp-action="DeleteBehavior">Delete Behavior</a>
 </body>

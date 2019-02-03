@@ -52,8 +52,8 @@ namespace WebApplication1.Controllers
             {
                 return View();
             }
-        }
-
+        } 
+        
         [HttpGet]
         public IActionResult DeleteStudent()
         {
@@ -107,6 +107,9 @@ namespace WebApplication1.Controllers
 
                 newBehavior = _behaviorData.Add(newBehavior);
 
+                _studentData.EditAddCurrentTotal(model.StudentName, model.Value);
+                _studentData.EditAddLifetimeTotal(model.StudentName, model.Value);
+
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -132,7 +135,11 @@ namespace WebApplication1.Controllers
 
             if (ModelState.IsValid)
             {
-                _behaviorData.Delete(model.BehaviorName, model.StudentName);
+                _studentData.EditDeleteCurrentTotal(model.StudentName, _behaviorData.GetByName(model.BehaviorName, model.StudentName).Value);
+                _studentData.EditDeleteLifetimeTotal(model.StudentName, _behaviorData.GetByName(model.BehaviorName, model.StudentName).Value);
+
+                _behaviorData.Delete(model.BehaviorName, model.StudentName);                
+
                 return RedirectToAction(nameof(Index));
             }
             else
@@ -141,7 +148,12 @@ namespace WebApplication1.Controllers
             }
         }
 
+        public IActionResult ResetCurrent()
+        {
+            _studentData.ResetCurrentTotal();
 
+            return RedirectToAction(nameof(Index));
+        }
 
 
 

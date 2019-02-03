@@ -3,10 +3,14 @@
 <h1>Delete Student</h1>
 
 <form method="post">
-    <div>
-        <label asp-for="StudentName"></label>
-        <input asp-for="StudentName" />
-        <span asp-validation-for="StudentName"></span>
+    <div class="row">
+        <div class="col-sm-2">
+            <label asp-for="StudentName"></label>
+        </div>
+        <div class="col-sm-1">
+            <input asp-for="StudentName" />
+            <span asp-validation-for="StudentName"></span>
+        </div>
     </div>
 
     <input type="submit" name="delete" value="Delete" />

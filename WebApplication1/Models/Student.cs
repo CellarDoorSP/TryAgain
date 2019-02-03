@@ -14,6 +14,7 @@ namespace WebApplication1.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public string StudentName { get; set; }
-        public List<Behavior> StudentBehaviors { get; set; }
+        public int LifetimeTotal { get; set; }
+        public int CurrentTotal { get; set; }
     }
 }
