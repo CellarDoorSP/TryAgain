@@ -10,6 +10,7 @@ namespace WebApplication1.Services
     {
         IEnumerable<Student> GetAll();
         Student GetByName(string name);
+        Student GetById(int id);
         Student Add(Student student);
         void Delete(string student);
         bool Contains(string student);

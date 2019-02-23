@@ -16,5 +16,8 @@ namespace WebApplication1.Models
         public string StudentName { get; set; }
         public int LifetimeTotal { get; set; }
         public int CurrentTotal { get; set; }
+
+        public int GraphValue { get; set; }
+        public int Id { get; set; }
     }
 }

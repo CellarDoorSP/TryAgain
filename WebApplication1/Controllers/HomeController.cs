@@ -43,6 +43,14 @@ namespace WebApplication1.Controllers
             {
                 var newStudent = new Student();
                 newStudent.StudentName = model.StudentName;
+                if (_studentData.GetAll().Count() > 0)
+                {
+                    newStudent.Id = _studentData.GetAll().Max(m => m.Id) + 1;
+                }
+                else
+                {
+                    newStudent.Id = 1;
+                }
 
                 newStudent = _studentData.Add(newStudent);
 
@@ -159,12 +167,6 @@ namespace WebApplication1.Controllers
 
 
 
-        public IActionResult KidView()
-        {
-            ViewData["Message"] = "This is where the kid view will go.";
-
-            return View();
-        }
 
         public IActionResult Attendance()
         {

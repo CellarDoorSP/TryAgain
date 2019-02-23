@@ -38,6 +38,11 @@ namespace WebApplication1.Services
             return _context.Students.FirstOrDefault(s => s.StudentName == name);
         }
 
+        public Student GetById(int id)
+        {
+            return _context.Students.FirstOrDefault(s => s.Id == id);
+        }
+
         public IEnumerable<Student> GetAll()
         {
             return _context.Students.OrderBy(s => s.StudentName);
@@ -62,6 +67,7 @@ namespace WebApplication1.Services
             if (Contains(student))
             {
                 GetByName(student).CurrentTotal += val;
+                GetByName(student).GraphValue = Convert.ToInt32((GetByName(student).CurrentTotal / 100.0) * 725.0);
                 _context.SaveChanges();
             }
         }
@@ -80,6 +86,7 @@ namespace WebApplication1.Services
             if (Contains(student))
             {
                 GetByName(student).CurrentTotal -= val;
+                GetByName(student).GraphValue = (GetByName(student).CurrentTotal / 100) * 725;
                 _context.SaveChanges();
             }
         }
@@ -89,6 +96,7 @@ namespace WebApplication1.Services
             foreach(var student in _context.Students)
             {
                 student.CurrentTotal = 0;
+                student.GraphValue = 200;
             }
 
             _context.SaveChanges();
