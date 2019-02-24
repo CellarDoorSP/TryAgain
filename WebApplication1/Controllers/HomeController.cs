@@ -164,6 +164,17 @@ namespace WebApplication1.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public IActionResult Details(int id)
+        {
+            var model = _studentData.GetById(id);
+            if (model == null)
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View(model);
+        }
+
+
 
 
 

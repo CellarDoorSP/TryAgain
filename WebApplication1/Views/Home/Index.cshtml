@@ -22,7 +22,10 @@
         @foreach (var student in Model.Students)
         {
             <tr>
-                <td width="125">@student.StudentName</td>
+                @*<td width="125">@student.StudentName</td>*@
+                <td width="125">
+                    <a href="/Home/Details/@student.Id">@student.StudentName</a>
+                </td>
                 <td>
                     <div class="container ">
                         <div class="row">
@@ -53,5 +56,5 @@
             </tr>
         }
     </table>
-    <a asp-action="ResetCurrent">Reset</a>
+    <input type="button" value="Reset" onclick="location.href='@Url.Action("ResetCurrent", "Home")'" />
 </body>
