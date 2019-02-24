@@ -174,6 +174,44 @@ namespace WebApplication1.Controllers
             return View(model);
         }
 
+        //[HttpGet]
+        //public IActionResult EditGoal()
+        //{
+        //    return View();
+        //}
+
+        //[HttpPost]
+        //public IActionResult EditGoal()
+        //{
+        //    var model = 
+
+        //    return View();
+
+            //if (ModelState.IsValid)
+            //{
+            //    var newStudent = new Student();
+            //    newStudent.StudentName = model.StudentName;
+            //    if (_studentData.GetAll().Count() > 0)
+            //    {
+            //        newStudent.Id = _studentData.GetAll().Max(m => m.Id) + 1;
+            //    }
+            //    else
+            //    {
+            //        newStudent.Id = 1;
+            //    }
+
+            //    newStudent = _studentData.Add(newStudent);
+
+            //    return RedirectToAction(nameof(Index));
+            //}
+            //else
+            //{
+            //    return View();
+            //}
+        //}
+
+
+
 
 
 

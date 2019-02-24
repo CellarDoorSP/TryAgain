@@ -1,0 +1,17 @@
+﻿@model WebApplication1.Models.Settings
+
+<h1>Edit Goal</h1>
+
+<form method="post">
+    <div class="row">
+        <div class="col-sm-2">
+            <label asp-for="Goal"></label>
+        </div>
+        <div class="col-sm-1">
+            <input asp-for="Goal" />
+            <span asp-validation-for="Goal"></span>
+        </div>
+    </div>
+
+    <input type="submit" name="save" value="Save" />
+</form>

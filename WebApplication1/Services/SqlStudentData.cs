@@ -67,7 +67,7 @@ namespace WebApplication1.Services
             if (Contains(student))
             {
                 GetByName(student).CurrentTotal += val;
-                GetByName(student).GraphValue = Convert.ToInt32((GetByName(student).CurrentTotal / 100.0) * 725.0);
+                GetByName(student).GraphValue = Convert.ToInt32((GetByName(student).CurrentTotal / 100.0) * 725.0) + 200;
                 _context.SaveChanges();
             }
         }
@@ -86,7 +86,7 @@ namespace WebApplication1.Services
             if (Contains(student))
             {
                 GetByName(student).CurrentTotal -= val;
-                GetByName(student).GraphValue = (GetByName(student).CurrentTotal / 100) * 725;
+                GetByName(student).GraphValue = Convert.ToInt32((GetByName(student).CurrentTotal / 100.0) * 725.0) + 200;
                 _context.SaveChanges();
             }
         }
